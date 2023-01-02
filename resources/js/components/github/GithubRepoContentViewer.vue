@@ -8,6 +8,16 @@
                 border-left-color: rgb(52, 52, 52);
                 padding-top: 3px">
             <!-- this is where the file that is opened will be displayed -->
+            <div draggable="true" class="h-full" style="
+            width: 15%;
+              border-right: 1px solid rgb(52, 52, 52);
+               background-color: rgb(21, 21, 21);
+                --tab-border-bottom-color:#6cc7f6;
+color: white; font-style: italic; font-size: 12px; padding-top: 2px;">
+                <GithubFileIcon :extension="this.extension"></GithubFileIcon>
+                <span style="font-weight: bold">{{ this.currentFile.name }}</span>
+                <font-awesome-icon style="float: right; padding-top: 2px; padding-right: 16px; cursor: pointer;" icon="fa-solid fa-xmark" @click="setFileClose()" />
+            </div>
 
         </div>
         <div class="w-full" style="height: 95%">
@@ -35,6 +45,7 @@
 </template>
 
 <script>
+import GithubFileIcon from "@/components/github/GithubFileIcon.vue";
 export default {
     name: "GithubRepoContentViewer",
 
@@ -44,10 +55,12 @@ export default {
             realText: '',
             clonedText: '',
             fileLines: 0,
-            colorMap: {"apple": "red", "market": "green", "banana": "orange", "select": "orange", "private": "#3E8ED5", "void": "#3E8ED5", "public": "#3E8ED5",
-                "protected": "#3E8ED5", "{": "white", "}": "white", ";": "white", "return": "purple"},
+            extension: '',
 
         }
+    },
+    components: {
+        GithubFileIcon
     },
 
     methods: {
@@ -96,6 +109,8 @@ export default {
             return all.every(item => this.includes(item));
         }
 
+
+        this.extension = this.currentFile.name.split('.')[1];
         this.realText = atob(this.currentFile.content);
         this.fileContentChanged();
 

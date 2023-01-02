@@ -49,11 +49,18 @@ export default {
             GithubRepoFileBrowser,
             GithubRepoContentViewer
         },
+
+    props: {
+        repoName: {
+            type: String,
+            required: true,
+        }
+    },
     mounted()
     {
 
 // adjusted
-        axios.get('/api/GTASA-SettingsSwitcher/getRepositoryFiles').then(({data}) =>
+        axios.get('/api/' + this.repoName  +  '/getRepositoryFiles').then(({data}) =>
         {
             this.repoContent = data.repositoryFiles;
         })

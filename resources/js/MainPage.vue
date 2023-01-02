@@ -1,7 +1,7 @@
 <template>
     <div class="relative h-full">
         <Headbar></Headbar>
-        <GithubRepoContent></GithubRepoContent>
+        <GithubRepoContent :repoName="repoName"></GithubRepoContent>
     </div>
 </template>
 
@@ -17,6 +17,7 @@ export default
     {
         return {
             projects: [],
+            repoName: "SAMP-DMGInformer",
         }
     },
 

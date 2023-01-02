@@ -14,14 +14,11 @@
 
                 <!-- determine icon --->
                 <div v-if="this.isFile" style="display: inline-block">
-                    <font-awesome-icon v-if="this.extension === 'html'" style="margin-right: 8px" icon="fa-brands fa-html5"/>
-                    <font-awesome-icon v-else-if="this.extension === 'js'" style="margin-right: 8px" icon="fa-brands fa-js"/>
-                    <font-awesome-icon v-else-if="this.extension === 'css' || this.extension === 'scss'" style="margin-right: 8px" icon="fa-brands fa-css3-alt"/>
-                    <font-awesome-icon v-else-if="this.extension === 'php'" style="margin-right: 8px" icon="fa-brands fa-php"/>
-                    <font-awesome-icon v-else style="margin-right: 8px" icon="fa-regular fa-file-code"/>
+                    <GithubFileIcon :extension="this.extension"></GithubFileIcon>
                 </div>
                 <div v-else-if="!this.isFile" style="display: inline-block">
-                    <font-awesome-icon style="margin-right: 8px" icon="fa-solid fa-folder" />
+                    <font-awesome-icon v-if="this.folderOpen" style="margin-right: 8px; color: #64D2FF;" icon="fa-solid fa-folder-open" />
+                    <font-awesome-icon v-else-if="!this.folderOpen" style="margin-right: 8px; color: #64D2FF;" icon="fa-solid fa-folder" />
                 </div>
                 <span style="margin-right: 8px; font-weight: bold; display: inline-block;">{{this.folderName}}</span>
             </div>
@@ -36,9 +33,10 @@
 </template>
 
 <script>
+import GithubFileIcon from "@/components/github/GithubFileIcon.vue";
 export default {
     name: "GithubRepoFolder",
-
+    components: {GithubFileIcon},
     data()
     {
         return {
