@@ -2,35 +2,26 @@
     <div class="h-full" style="width: 87.5%; float: left; border-right-color: rgb(52, 52, 52)">
 
         <!-- files header -->
-        <div class="w-full h-5" style="min-height: 30px; padding-left: 12px; padding-right: 12px; border-bottom: 1px solid rgb(52, 52, 52);
-                border-top-color: rgb(52, 52, 52);
-                border-right-color: rgb(52, 52, 52);
-                border-left-color: rgb(52, 52, 52);
-                padding-top: 3px">
+        <div class="w-full h-5 filesheader">
             <!-- this is where the file that is opened will be displayed -->
-            <div draggable="true" class="h-full" style="
-            width: 15%;
-              border-right: 1px solid rgb(52, 52, 52);
-               background-color: rgb(21, 21, 21);
-                --tab-border-bottom-color:#6cc7f6;
-color: white; font-style: italic; font-size: 12px; padding-top: 2px;">
+            <div draggable="true" class="h-full currentSelectedFile">
                 <GithubFileIcon :extension="this.extension"></GithubFileIcon>
-                <span style="font-weight: bold">{{ this.currentFile.name }}</span>
-                <font-awesome-icon style="float: right; padding-top: 2px; padding-right: 16px; cursor: pointer;" icon="fa-solid fa-xmark" @click="setFileClose()" />
+                <span class="font-bold">{{ this.currentFile.name }}</span>
+                <font-awesome-icon class="currentFileCancel" icon="fa-solid fa-xmark" @click="setFileClose()" />
             </div>
 
         </div>
-        <div class="w-full" style="height: 95%">
+        <div class="w-full height-95">
             <!-- amount of lines displayed -->
-            <div class="relative editortheme" style="pointer-events:none; width: 5%; border-right: 1px solid rgb(52, 52, 52); float: left; height: 100%; overflow: auto; overflow-y: hidden;"
+            <div class="relative editortheme linesWrapper"
             ref="lineNumber">
                 <div v-for="index in this.fileLines">
-                    <p style="margin: 0; padding: 0; text-align: center; padding-right: 8px;">{{index}}</p>
+                    <p class="lineDesign">{{index}}</p>
                 </div>
             </div>
 
             <!-- actual file display --->
-            <div class="h-full relative" style="width: 95%; border-right-color: rgb(52, 52, 52); float: left;">
+            <div class="h-full relative fileContentWrapper">
                 <div class="backdrop editortheme" ref="clonedTextArea">
                     <div class="custom-area">
                         <!-- TODO - make sure html code does not get rendered --->
@@ -196,5 +187,62 @@ export default {
     background-color: rgba(28, 46, 62, 1);
 }
 
+
+
+.height-95
+{
+    height: 95%;
+}
+.filesheader
+{
+    min-height: 30px; padding-left: 12px; padding-right: 12px; border-bottom: 1px solid rgb(52, 52, 52);
+    border-top-color: rgb(52, 52, 52);
+    border-right-color: rgb(52, 52, 52);
+    border-left-color: rgb(52, 52, 52);
+    padding-top: 3px
+}
+
+.currentSelectedFile
+{
+    width: 15%;
+    border-right: 1px solid rgb(52, 52, 52);
+    background-color: rgb(21, 21, 21);
+    --tab-border-bottom-color:#6cc7f6;
+    color: white; font-style: italic; font-size: 12px; padding-top: 2px;
+}
+
+.currentFileCancel
+{
+    float: right;
+    padding-top: 2px;
+    padding-right: 16px;
+    cursor: pointer;
+}
+
+.linesWrapper
+{
+    pointer-events:none;
+    width: 5%;
+    border-right: 1px solid rgb(52, 52, 52);
+    float: left;
+    height: 100%;
+    overflow: auto;
+    overflow-y: hidden;
+}
+
+.lineDesign
+{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    padding-right: 8px;
+}
+
+.fileContentWrapper
+{
+    width: 95%;
+    border-right-color: rgb(52, 52, 52);
+    float: left;
+}
 /* main attributes: 3E8ED5, comments: 4F8B4C, return, if, try: D893b1, parameters: 94D9F7*/
 </style>

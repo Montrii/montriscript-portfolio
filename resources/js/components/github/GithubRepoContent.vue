@@ -1,15 +1,13 @@
 <template>
     <div style="background-color: rgb(21, 21, 21); z-index: 1001" class="absolute h-full w-full top-0 left-0">
-        <div v-if="!repoContent" class="relative h-full w-full" style="text-align:center;background-color: rgba(0, 0, 0, 0.5)"
+        <div v-if="!repoContent" class="relative h-full w-full loading-screen"
         >
             <hollow-dots-spinner
                 :animation-duration="1500"
                 :dot-size="15"
                 :dots-num="3"
                 color="grey"
-                style="margin: 0 auto;
-top: 50%;
-position: relative"
+                class="loadingscreen-dots"
             />
         </div>
 
@@ -99,5 +97,16 @@ export default {
 </script>
 
 <style scoped>
+.loadingscreen
+{
+    text-align:center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
 
+.loadingscreen-dots
+{
+    margin: 0 auto;
+    top: 50%;
+    position: relative;
+}
 </style>

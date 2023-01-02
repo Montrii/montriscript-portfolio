@@ -1,29 +1,27 @@
 <template>
     <div>
-        <div class="w-full" style="min-height: 30px; padding-left: 12px; padding-right: 12px;
-                box-sizing: border-box;
-                padding-top: 3px;"
+        <div class="w-full repoFolderWrapper"
              >
 
 
             <!-- clickable folder --->
-            <div style="cursor: pointer; " @click="clickFolder"
+            <div class="cursor-pointer" @click="clickFolder"
                  @mouseleave="fileHovered = false"
                  @mouseenter="fileHovered = true"
                  :class="{'fileHovered' : fileHovered}">
 
                 <!-- determine icon --->
-                <div v-if="this.isFile" style="display: inline-block">
+                <div v-if="this.isFile" class="inline-block margin-8">
                     <GithubFileIcon :extension="this.extension"></GithubFileIcon>
                 </div>
-                <div v-else-if="!this.isFile" style="display: inline-block">
-                    <font-awesome-icon v-if="this.folderOpen" style="margin-right: 8px; color: #64D2FF;" icon="fa-solid fa-folder-open" />
-                    <font-awesome-icon v-else-if="!this.folderOpen" style="margin-right: 8px; color: #64D2FF;" icon="fa-solid fa-folder" />
+                <div v-else-if="!this.isFile" class="inline-block margin-8">
+                    <font-awesome-icon v-if="this.folderOpen" style="color: #64D2FF;" icon="fa-solid fa-folder-open" />
+                    <font-awesome-icon v-else-if="!this.folderOpen" style="color: #64D2FF;" icon="fa-solid fa-folder" />
                 </div>
-                <span style="margin-right: 8px; font-weight: bold; display: inline-block;">{{this.folderName}}</span>
+                <span class="font-bold inline-block margin-8">{{this.folderName}}</span>
             </div>
 
-            <div v-if="folderOpen" style="margin-right: 8px;">
+            <div v-if="folderOpen" class="margin-8">
                 <GithubRepoFolder @fileSelected="onFileClickedTwo" :entireFile="folder" :allItems="this.allItems" :key="folder.size" v-for="folder in this.childItems" :folderName="folder.name" :childItems="getChildItems(folder)">{{folder.name}}</GithubRepoFolder>
             </div>
 
@@ -106,9 +104,21 @@ export default {
 <style scoped>
 
 
+
+.margin-8
+{
+    margin-right: 8px;
+}
 .fileHovered
 {
     background-color: rgb(97, 97, 97);
     color: white;
+}
+
+.repoFolderWrapper
+{
+    min-height: 30px; padding-left: 12px; padding-right: 12px;
+    box-sizing: border-box;
+    padding-top: 3px;
 }
 </style>

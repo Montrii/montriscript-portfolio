@@ -17,7 +17,7 @@ export default
     {
         return {
             projects: [],
-            repoName: "SAMP-DMGInformer",
+            repoName: "Borderlands1.Injector",
         }
     },
 
