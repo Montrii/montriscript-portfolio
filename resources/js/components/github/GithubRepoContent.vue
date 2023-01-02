@@ -7,7 +7,9 @@
                 :dot-size="15"
                 :dots-num="3"
                 color="grey"
-                style="margin: 0 auto;"
+                style="margin: 0 auto;
+top: 50%;
+position: relative"
             />
         </div>
 
