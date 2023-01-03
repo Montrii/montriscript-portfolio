@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BrowserController;
 use App\Http\Controllers\GithubController;
 use App\Http\Controllers\ProjectsController;
 use Illuminate\Http\Request;
@@ -26,3 +27,4 @@ Route::get('/refreshProjectData', [ProjectsController::class, 'refreshProjectDat
 Route::get('/loadGithubRepositories', [GithubController::class, 'loadGithubRepositories']);
 
 Route::get('{repository}/getRepositoryFiles', [GithubController::class, 'getRepositoryFiles']);
+Route::get('/getBrowserInformation', [BrowserController::class, 'getBrowserInformation']);
