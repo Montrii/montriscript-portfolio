@@ -14,12 +14,20 @@
 
         <!-- entire repo content --->
         <div v-else-if="repoContent" class="relative h-full w-full">
-            <!-- files container --->
-            <GithubRepoFileBrowser v-if="this.bigForFileBrowser" @fileSelected="onFileClicked" :selectedRepo="repoContent"></GithubRepoFileBrowser>
-            <GithubMobileRepoFileBrowser v-else></GithubMobileRepoFileBrowser>
+            <!-- mobile view --->
+            <div v-if="!this.bigForFileBrowser" class="h-full w-full relative">
+                <GithubMobileRepoFileBrowser style="z-index: 1;" @fileSelected="onFileClicked" :selectedRepo="repoContent"></GithubMobileRepoFileBrowser>
+                <GithubMobileContentViewer style="z-index: 0; position: absolute; top: 0px; left: 0px;" v-if="selectedFile"></GithubMobileContentViewer>
+            </div>
 
-            <!-- file content container --->
-            <GithubRepoContentViewer v-if="selectedFile" :currentFile="selectedFile" @fileClosed="onFileClose"></GithubRepoContentViewer>
+
+            <!-- normal view--->
+            <div v-else-if="this.bigForFileBrowser">
+                <GithubRepoFileBrowser @fileSelected="onFileClicked" :selectedRepo="repoContent"></GithubRepoFileBrowser>
+                <GithubRepoContentViewer v-if="selectedFile" :currentFile="selectedFile" @fileClosed="onFileClose"></GithubRepoContentViewer>
+            </div>
+
+
         </div>
 
 
@@ -32,9 +40,9 @@ import GithubRepoFileBrowser from "@/components/github/GithubRepoFileBrowser.vue
 import GithubRepoContentViewer from "@/components/github/GithubRepoContentViewer.vue";
 import {HollowDotsSpinner} from "epic-spinners";
 import GithubMobileRepoFileBrowser from "@/components/github/repobrowser/mobile/GithubMobileRepoFileBrowser.vue";
+import GithubMobileContentViewer from "@/components/github/repobrowser/mobile/GithubMobileContentViewer.vue";
 export default {
     name: "GithubRepoContent",
-
 
     data()
     {
@@ -47,12 +55,21 @@ export default {
     },
 
 
+
+    computed:
+        {
+            shouldDisplayMobileFileBrowser : function()
+            {
+                return this.bigForFileBrowser === null;
+            }
+        },
     components:
         {
+            GithubMobileContentViewer,
             GithubMobileRepoFileBrowser,
             HollowDotsSpinner,
             GithubRepoFileBrowser,
-            GithubRepoContentViewer
+            GithubRepoContentViewer,
         },
 
     props: {
