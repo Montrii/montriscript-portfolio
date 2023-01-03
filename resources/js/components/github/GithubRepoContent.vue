@@ -15,7 +15,8 @@
         <!-- entire repo content --->
         <div v-else-if="repoContent" class="relative h-full w-full">
             <!-- files container --->
-            <GithubRepoFileBrowser @fileSelected="onFileClicked" :selectedRepo="repoContent"></GithubRepoFileBrowser>
+            <GithubRepoFileBrowser v-if="this.bigForFileBrowser" @fileSelected="onFileClicked" :selectedRepo="repoContent"></GithubRepoFileBrowser>
+            <GithubMobileRepoFileBrowser v-else></GithubMobileRepoFileBrowser>
 
             <!-- file content container --->
             <GithubRepoContentViewer v-if="selectedFile" :currentFile="selectedFile" @fileClosed="onFileClose"></GithubRepoContentViewer>
@@ -30,6 +31,7 @@ import axios from "axios";
 import GithubRepoFileBrowser from "@/components/github/GithubRepoFileBrowser.vue";
 import GithubRepoContentViewer from "@/components/github/GithubRepoContentViewer.vue";
 import {HollowDotsSpinner} from "epic-spinners";
+import GithubMobileRepoFileBrowser from "@/components/github/repobrowser/mobile/GithubMobileRepoFileBrowser.vue";
 export default {
     name: "GithubRepoContent",
 
@@ -39,12 +41,15 @@ export default {
         return {
             repoContent: null,
             selectedFile: null,
+
+            bigForFileBrowser: null,
         }
     },
 
 
     components:
         {
+            GithubMobileRepoFileBrowser,
             HollowDotsSpinner,
             GithubRepoFileBrowser,
             GithubRepoContentViewer
@@ -63,6 +68,13 @@ export default {
         axios.get('/api/' + this.repoName  +  '/getRepositoryFiles').then(({data}) =>
         {
             this.repoContent = data.repositoryFiles;
+        })
+
+
+        this.bigForFileBrowser = window.innerWidth > 900;
+        window.addEventListener('resize', () =>
+        {
+            this.bigForFileBrowser = window.innerWidth > 900;
         })
 
     },
