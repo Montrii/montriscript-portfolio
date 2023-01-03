@@ -15,7 +15,7 @@ export default
     {
         return {
             projects: [],
-            repoName: "Borderlands1.Injector",
+            repoName: "montriscript-portfolio",
             browserInformation: {
                 'browserInfo': {
                     'browserVersion':

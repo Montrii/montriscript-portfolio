@@ -11,10 +11,13 @@
 
     <!-- "blurry background -->
     <transition name="mobileFileBrowserAppear">
-        <div v-if="this.mobileButtonClicked" class="w-full transitionHeight" style="z-index: 2; height: 95%; position: relative; background-color: rgba(57, 57, 57, 0.2);">
-            <div class="transitionHeightResult" style="padding-top: 5%; width: 75%; height: 95%; position: relative; background-color: rgb(21, 21, 21); margin: 0 auto;
+        <div v-if="this.mobileButtonClicked" class="w-full transitionHeight" style="
+        z-index: 2; height: 95%; position: relative; background-color: rgba(57, 57, 57, 0.2);
+backdrop-filter: blur(2px);">
+            <div class="transitionHeightResult" style="
+            padding-top: 5%; width: 75%; height: 95%; position: relative; background-color: rgb(21, 21, 21); margin: 0 auto;
 border-radius: 10px; box-shadow: 2px 2px rgba(0,0,0,0.3), -2px 0 0 rgba(0,0,0,0.3)">
-                <div class="w-full h-full relative" style="overflow: auto">
+                <div class="w-full h-full relative" style="overflow: auto; ">
                     <GithubRepoFolder @fileSelected="onFileClickedChild" :entireFile="folder" :allItems="this.selectedRepo" :key="folder.size" v-for="folder in this.startingFolders" :folderName="folder.name" :childItems="getChildItemsForStartingFolders(folder)">{{folder.name}}</GithubRepoFolder>
                 </div>
             </div>
