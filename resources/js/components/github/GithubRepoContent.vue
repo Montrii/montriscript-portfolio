@@ -17,12 +17,12 @@
             <!-- mobile view --->
             <div v-if="!this.bigForFileBrowser" class="h-full w-full relative">
                 <GithubMobileRepoFileBrowser style="z-index: 1;" @fileSelected="onFileClicked" :selectedRepo="repoContent"></GithubMobileRepoFileBrowser>
-                <GithubMobileContentViewer style="z-index: 0; position: absolute; top: 0px; left: 0px;" v-if="selectedFile"></GithubMobileContentViewer>
+                <GithubMobileContentViewer v-if="selectedFile" :currentFile="selectedFile" @fileClosed="onFileClicked" style="z-index: 0; position: absolute; top: 0px; left: 0px;"></GithubMobileContentViewer>
             </div>
 
 
             <!-- normal view--->
-            <div v-else-if="this.bigForFileBrowser">
+            <div v-else-if="this.bigForFileBrowser" class="h-full w-full relative">
                 <GithubRepoFileBrowser @fileSelected="onFileClicked" :selectedRepo="repoContent"></GithubRepoFileBrowser>
                 <GithubRepoContentViewer v-if="selectedFile" :currentFile="selectedFile" @fileClosed="onFileClose"></GithubRepoContentViewer>
             </div>
