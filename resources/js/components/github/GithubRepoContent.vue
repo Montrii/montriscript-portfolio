@@ -16,7 +16,7 @@
         <div v-else-if="repoContent" class="relative h-full w-full">
             <!-- mobile view --->
             <div v-if="!this.bigForFileBrowser" class="h-full w-full relative">
-                <GithubMobileRepoFileBrowser style="z-index: 1;" @fileSelected="onFileClicked" :selectedRepo="repoContent"></GithubMobileRepoFileBrowser>
+                <GithubMobileRepoFileBrowser @fileSelected="onFileClicked" :selectedRepo="repoContent"></GithubMobileRepoFileBrowser>
                 <GithubMobileContentViewer v-if="selectedFile" :currentFile="selectedFile" @fileClosed="onFileClicked" style="z-index: 0; position: absolute; top: 0px; left: 0px;"></GithubMobileContentViewer>
             </div>
 

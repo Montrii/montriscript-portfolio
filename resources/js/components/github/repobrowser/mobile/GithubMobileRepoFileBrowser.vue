@@ -1,27 +1,25 @@
 <template>
     <!-- button to be able to be clicked --->
-    <div class="w-full h-full relative">
-        <div class="mobileFileBrowserButton"
-             :class="{'mobileButtonClicked': this.mobileButtonClicked}"
-             @click="onMobileButtonClicked">
+    <div class="mobileFileBrowserButton" style="position: relative; z-index: 1;"
+         :class="{'mobileButtonClicked': this.mobileButtonClicked}"
+         @click="onMobileButtonClicked">
 
-            <div class="mobileFileBrowserIcon text-center">
-                <font-awesome-icon class="inline-block" icon="fa-solid fa-bars" />
-            </div>
+        <div class="mobileFileBrowserIcon text-center">
+            <font-awesome-icon class="inline-block" icon="fa-solid fa-bars" />
         </div>
+    </div>
 
-        <!-- "blurry background -->
-        <transition name="mobileFileBrowserAppear">
-            <div v-if="this.mobileButtonClicked" class="w-full transitionHeight" style="height: 95%; position: relative; background-color: rgba(57, 57, 57, 0.2);">
-                <div class="transitionHeightResult" style="width: 75%; height: 95%; position: relative; background-color: rgb(21, 21, 21); margin: 0 auto;
+    <!-- "blurry background -->
+    <transition name="mobileFileBrowserAppear">
+        <div v-if="this.mobileButtonClicked" class="w-full transitionHeight" style="z-index: 2; height: 95%; position: relative; background-color: rgba(57, 57, 57, 0.2);">
+            <div class="transitionHeightResult" style="width: 75%; height: 95%; position: relative; background-color: rgb(21, 21, 21); margin: 0 auto;
 border-radius: 10px; box-shadow: 2px 2px rgba(0,0,0,0.3), -2px 0 0 rgba(0,0,0,0.3)">
-                    <div class="w-full h-full relative" style="overflow: auto">
-                        <GithubRepoFolder @fileSelected="onFileClickedChild" :entireFile="folder" :allItems="this.selectedRepo" :key="folder.size" v-for="folder in this.startingFolders" :folderName="folder.name" :childItems="getChildItemsForStartingFolders(folder)">{{folder.name}}</GithubRepoFolder>
-                    </div>
+                <div class="w-full h-full relative" style="overflow: auto">
+                    <GithubRepoFolder @fileSelected="onFileClickedChild" :entireFile="folder" :allItems="this.selectedRepo" :key="folder.size" v-for="folder in this.startingFolders" :folderName="folder.name" :childItems="getChildItemsForStartingFolders(folder)">{{folder.name}}</GithubRepoFolder>
                 </div>
             </div>
-        </transition>
-    </div>
+        </div>
+    </transition>
 </template>
 
 <script>

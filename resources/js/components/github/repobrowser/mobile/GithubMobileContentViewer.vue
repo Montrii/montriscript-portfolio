@@ -4,7 +4,8 @@
         <div class="w-full h-10" style="border-bottom: 1px solid white;">
             <!-- file header --->
             <div class="h-full italic ml-5 pl-5 pr-5"
-                 draggable="true" style="border: 1px solid rgb(52, 52, 52); display: inline-block">
+                 draggable="true" style="border: 1px solid rgb(52, 52, 52); display: inline-block; z-index: 1; position: relative"
+            @click="setFileClose()">
                 <GithubFileIcon class="pr-3" :extension="this.extension"></GithubFileIcon>
                 <span class="font-bold">{{ this.currentFile.name }}</span>
                 <font-awesome-icon class="pl-7 pt-1" icon="fa-solid fa-xmark"/>
