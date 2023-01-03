@@ -36,8 +36,8 @@
 
 <script>
 import axios from "axios";
-import GithubRepoFileBrowser from "@/components/github/GithubRepoFileBrowser.vue";
-import GithubRepoContentViewer from "@/components/github/GithubRepoContentViewer.vue";
+import GithubRepoFileBrowser from "@/components/github/repobrowser/normal/GithubRepoFileBrowser.vue";
+import GithubRepoContentViewer from "@/components/github/repobrowser/normal/GithubRepoContentViewer.vue";
 import {HollowDotsSpinner} from "epic-spinners";
 import GithubMobileRepoFileBrowser from "@/components/github/repobrowser/mobile/GithubMobileRepoFileBrowser.vue";
 import GithubMobileContentViewer from "@/components/github/repobrowser/mobile/GithubMobileContentViewer.vue";

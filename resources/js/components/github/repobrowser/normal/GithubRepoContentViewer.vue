@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import GithubFileIcon from "@/components/github/GithubFileIcon.vue";
+import GithubFileIcon from "@/components/github/repobrowser/utilties/GithubFileIcon.vue";
 export default {
     name: "GithubRepoContentViewer",
 

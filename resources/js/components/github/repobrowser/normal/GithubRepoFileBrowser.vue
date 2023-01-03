@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import GithubRepoFolder from "@/components/github/GithubRepoFolder.vue";
+import GithubRepoFolder from "@/components/github/repobrowser/utilties/GithubRepoFolder.vue";
 export default {
     name: "GithubRepoFileBrowser.vue",
     components: {GithubRepoFolder},

@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import GithubFileIcon from "@/components/github/GithubFileIcon.vue";
+import GithubFileIcon from "@/components/github/repobrowser/utilties/GithubFileIcon.vue";
 export default {
     name: "GithubRepoFolder",
     components: {GithubFileIcon},
@@ -71,7 +71,10 @@ export default {
         this.isFile = this.childItems.length === 0;
         if(this.isFile)
         {
-            this.extension = this.folderName.split(".")[1];
+            if(this.folderName.split(".")[1] !== undefined)
+            {
+                this.extension = this.folderName.split(".")[1];
+            }
         }
     },
     methods:

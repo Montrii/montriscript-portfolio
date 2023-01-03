@@ -1,15 +1,9 @@
 <template>
     <div class="w-full h-full relative">
         <!-- header row for current file and close button -->
-        <div class="w-full h-10" style="border-bottom: 1px solid white;">
+        <div class="w-full h-10" style="border-bottom: 1px solid rgb(52, 52, 52);">
             <!-- file header --->
-            <div class="h-full italic ml-5 pl-5 pr-5"
-                 draggable="true" style="border: 1px solid rgb(52, 52, 52); display: inline-block; z-index: 1; position: relative"
-            @click="setFileClose()">
-                <GithubFileIcon class="pr-3" :extension="this.extension"></GithubFileIcon>
-                <span class="font-bold">{{ this.currentFile.name }}</span>
-                <font-awesome-icon class="pl-7 pt-1" icon="fa-solid fa-xmark"/>
-            </div>
+            <GithubFileHeader :currentFile="this.currentFile" @fileClosed="setFileClose()"></GithubFileHeader>
 
             <!-- exit button --->
             <div class="h-full mr-5" style="float: right; display: inline-block">
@@ -31,7 +25,7 @@
 
             <!-- textarea content -->
             <div style="right: 0px; position: absolute; width: 87.5%; height: 100%;">
-                <div class="backdrop editortheme" ref="clonedTextArea">
+                <div class="backdrop editortheme" style="font-size: 12px;" ref="clonedTextArea">
                     <div class="custom-area">
                         <!-- TODO - make sure html code does not get rendered --->
                         <!-- cloned text goes here --->
@@ -47,10 +41,12 @@
 </template>
 
 <script>
-import GithubFileIcon from "@/components/github/GithubFileIcon.vue";
+import GithubFileIcon from "@/components/github/repobrowser/utilties/GithubFileIcon.vue";
+import GithubFileHeader from "@/components/github/repobrowser/utilties/GithubFileHeader.vue";
 export default {
     name: "GithubMobileContentViewer.vue",
     components: {
+        GithubFileHeader,
         GithubFileIcon
     },
     data()
@@ -59,7 +55,6 @@ export default {
             realText: '',
             clonedText: '',
             fileLines: 0,
-            extension: ''
         }
     },
     props: {
@@ -107,7 +102,6 @@ export default {
         }
 
 
-        this.extension = this.currentFile.name.split('.')[1];
         this.realText = atob(this.currentFile.content);
         this.fileContentChanged();
     }

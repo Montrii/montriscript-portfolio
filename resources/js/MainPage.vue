@@ -8,7 +8,7 @@
 <script>
 import Headbar from "@/components/header/Headbar.vue";
 import axios from "axios";
-import GithubRepoContent from "@/components/github/GithubRepoContent.vue";
+import GithubRepoContent from "@/components/github/repobrowser/GithubRepoContent.vue";
 export default
 {
     name: "MainPage.vue",
