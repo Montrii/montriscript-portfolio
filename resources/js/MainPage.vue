@@ -1,12 +1,14 @@
 <template>
     <div class="relative h-full">
-        <GithubRepoContent :repoName="repoName"></GithubRepoContent>
+<!--        <GithubRepoContent :repoName="repoName"></GithubRepoContent>-->
+        <Footer></Footer>
     </div>
 </template>
 
 <script>
 import axios from "axios";
 import GithubRepoContent from "@/components/github/repobrowser/GithubRepoContent.vue";
+import Footer from "@/components/footer/Footer.vue";
 export default
 {
     name: "MainPage.vue",
@@ -43,6 +45,7 @@ export default
 
     components: {
         GithubRepoContent,
+        Footer,
     },
 
 
