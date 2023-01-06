@@ -1,6 +1,8 @@
 <template>
     <div class="relative h-full">
-<!--        <GithubRepoContent :repoName="repoName"></GithubRepoContent>-->
+        <Headbar></Headbar>
+        <Introduction></Introduction>
+        <AboutMe></AboutMe>
         <Footer></Footer>
     </div>
 </template>
@@ -9,6 +11,9 @@
 import axios from "axios";
 import GithubRepoContent from "@/components/github/repobrowser/GithubRepoContent.vue";
 import Footer from "@/components/footer/Footer.vue";
+import Headbar from "@/components/header/Headbar.vue";
+import Introduction from "@/components/Introduction.vue";
+import AboutMe from "@/components/AboutMe.vue";
 export default
 {
     name: "MainPage.vue",
@@ -44,8 +49,10 @@ export default
     },
 
     components: {
-        GithubRepoContent,
+        Introduction,
+        Headbar,
         Footer,
+        AboutMe
     },
 
 

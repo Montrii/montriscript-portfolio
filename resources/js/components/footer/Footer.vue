@@ -1,6 +1,6 @@
 <template>
     <!-- footer outer content --->
-    <div style="position: absolute; width: 100%; height: 15%; bottom: 0; justify-content: center; display: flex;" class="text-center">
+    <div id="contacts" style="position: relative; width: 100%; height: 15%; bottom: 0; justify-content: center; display: flex;" class="text-center">
         <div style="position: relative; width: 95%; height: 100%; border-top: 1px solid rgb(52, 52, 52);">
             <div class="text-center pt-2" style="position: relative; height: 100%; width: 100%;">
                 <!-- icons -->
