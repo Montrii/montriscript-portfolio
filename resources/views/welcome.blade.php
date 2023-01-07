@@ -14,7 +14,7 @@
         <script src="https://cdn.tailwindcss.com"></script>
         @vite(['resources/js/app.js', 'resources/css/app.css'])
     </head>
-    <body style="background-color: #191919; color: #8e8e8e; padding: 0; border: 0; height: 100%">
+    <body style="background-color: #191919; color: #8e8e8e; padding: 0; border: 0; height: 100%;">
         <div id="app" class="h-full">
         </div>
     </body>

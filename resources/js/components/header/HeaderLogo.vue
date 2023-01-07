@@ -12,7 +12,7 @@ export default {
         {
             returnToHomepage()
             {
-
+                document.getElementById("introduction").scrollIntoView({behavior: "smooth"});
             }
         }
 }

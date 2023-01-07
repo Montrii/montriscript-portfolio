@@ -19,6 +19,8 @@
         "@fortawesome/vue-fontawesome": "^3.0.2",
         "@vitejs/plugin-vue": "^4.0.0",
         "epic-spinners": "^2.0.0",
-        "vue": "^3.2.36"
+        "vue": "^3.2.36",
+        "vue-observe-visibility": "^2.0.0-alpha.1",
+        "vue-waypoint": "^4.2.5"
     }
 }
