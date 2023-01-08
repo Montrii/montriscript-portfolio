@@ -15,7 +15,7 @@
             <div style="margin: 0 auto;
     top: 50%; right: 20%;
     position: relative;" class="introText">
-                <p>Hi, i'm</p>
+                <p>Hi, I'm</p>
                 <span>Montri or also called Justin</span>
             </div>
         </div>
